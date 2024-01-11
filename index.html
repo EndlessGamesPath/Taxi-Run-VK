@@ -216,6 +216,45 @@
 
       // Вызываем апдейт при входе на страницу и изменений размеров окна браузера
       function Update() {
+        // Фиксируем экран с игрой
+        var lockCanvasText = 'pc';
+
+        var desktopStrings = ["pc", "desktop", "computer", "laptop", "windows", "пк", "компьютер", "виндовс", "оба", "все", "all", "полн"];
+        var mobileStrings = ["mobile", "phone", "handheld", "android", "телефон", "мобиль", "андроид", "оба", "все", "all", "полн"];
+        var touchStrings = ["touch", "тач"];
+        var navigatorStrings = ["nav", "навиг", "userAgent"];
+
+        if(touchStrings.some(i => lockCanvasText.includes(i))) {
+          if(isDeviceTouch) {
+            if(mobileStrings.some(i => lockCanvasText.includes(i))) {
+              lock(canvas, 9 / 16 );
+            }
+          } else {
+            if(desktopStrings.some(i => lockCanvasText.includes(i))) {
+              lock(canvas, 9 / 16 );
+            }
+          }
+        } else if(navigatorStrings.some(i => lockCanvasText.includes(i))) {
+          if(isDeviceNavigator) {
+            if(mobileStrings.some(i => lockCanvasText.includes(i))) {
+              lock(canvas, 9 / 16 );
+            }
+          } else {
+            if(desktopStrings.some(i => lockCanvasText.includes(i))) {
+              lock(canvas, 9 / 16 );
+            }
+          }
+        } else {
+          if(isDeviceNavigator) {
+            if(mobileStrings.some(i => lockCanvasText.includes(i))) {
+              lock(canvas, 9 / 16 );
+            }
+          } else {
+            if(desktopStrings.some(i => lockCanvasText.includes(i))) {
+              lock(canvas, 9 / 16 );
+            }
+          }
+        }
         if(window.innerWidth < window.innerHeight) {
           isPortrait = true;
           lock(loading, 9/16);
@@ -326,7 +365,7 @@
                         createUnityInstance(
                             canvas,
                             {
-                                dataUrl: buildUrl + '/068db32943f32835fb0fb5a213d209e7.data.unityweb',
+                                dataUrl: buildUrl + '/68a524b5ba0607b0e485efb8c99a7991.data.unityweb',
                                 frameworkUrl: buildUrl + '/8f53bb56033104a7b647f2dfb93382e0.js.unityweb',
                                 codeUrl: buildUrl + '/97eb4a85c3b9699c630bab8e7841fb2b.wasm.unityweb',
                                 streamingAssetsUrl: 'StreamingAssets',
