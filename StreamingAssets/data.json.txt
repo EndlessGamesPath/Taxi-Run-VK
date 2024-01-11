@@ -1,0 +1,5 @@
+{
+    "levelPlayer": 0
+    "coinsCount": 100
+    "numberCompletedLevels": 0
+}
